@@ -4,6 +4,7 @@ import com.Nong.treading.modal.Order;
 import com.Nong.treading.modal.User;
 import com.Nong.treading.modal.Wallet;
 import com.Nong.treading.modal.WalletTransaction;
+import com.Nong.treading.service.OrderService;
 import com.Nong.treading.service.UserService;
 import com.Nong.treading.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,10 @@ public class WalletController {
     private WalletService walletService;
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private OrderService orderService;
+
 
     @GetMapping("/api/wallet")
     public ResponseEntity<Wallet> getUserWallet(@RequestHeader("Authorization") String jwt) throws Exception {
@@ -43,18 +48,18 @@ public class WalletController {
         return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
     }
 
-//    @PutMapping("/api/wallet/order/{orderId}/pay")
-//    public ResponseEntity<Wallet> payOrderPayment(
-//            @RequestHeader("Authorization") String jwt,
-//            @PathVariable Long orderId,
-//            @RequestBody WalletTransaction res
-//    )throws Exception {
-//        User user = userService.findUserProfileByJwt(jwt);
-//        Order order = orderService.getOrderById(orderId);
-//        Wallet wallet = walletService.payOrderPayment(order, user);
-//
-//        return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
-//
-//    }
+    @PutMapping("/api/wallet/order/{orderId}/pay")
+    public ResponseEntity<Wallet> payOrderPayment(
+            @RequestHeader("Authorization") String jwt,
+            @PathVariable Long orderId,
+            @RequestBody WalletTransaction res
+    )throws Exception {
+        User user = userService.findUserProfileByJwt(jwt);
+        Order order = orderService.getOrderById(orderId);
+        Wallet wallet = walletService.payOrderPayment(order, user);
+
+        return new ResponseEntity<>(wallet, HttpStatus.ACCEPTED);
+
+    }
 
 }
