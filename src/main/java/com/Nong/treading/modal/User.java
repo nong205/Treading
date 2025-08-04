@@ -18,4 +18,6 @@ public class User {
     private  TwoFactorAuth twoFactorAuth = new TwoFactorAuth();
     private USER_ROLE role = USER_ROLE.ROLE_CUSTOMER;
 
+
+
 }

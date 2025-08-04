@@ -5,15 +5,15 @@ import com.Nong.treading.domain.OrderType;
 import com.Nong.treading.modal.*;
 import com.Nong.treading.repository.OrderItemRepository;
 import com.Nong.treading.repository.OrderRepository;
-import jakarta.persistence.Entity;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
+@Service
 public class OrderServiceImpl implements OrderService {
 
     @Autowired

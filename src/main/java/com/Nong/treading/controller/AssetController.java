@@ -20,7 +20,7 @@ public class AssetController {
 
     private UserService userService;
 
-    @GetMapping("/(assetId}")
+    @GetMapping("/{assetId}")
     public ResponseEntity<Asset> getAssetById(@PathVariable Long assetId) throws Exception {
         Asset asset = assetService.getAssetById(assetId);
         return ResponseEntity.ok().body(asset);

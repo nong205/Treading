@@ -6,11 +6,12 @@ import com.Nong.treading.modal.Withdrawal;
 import com.Nong.treading.repository.WithdrawalRepository;
 import jakarta.persistence.Entity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Entity
+@Service
 public class WithdrawalServiceImpl implements WithdrawalService {
 
     @Autowired
